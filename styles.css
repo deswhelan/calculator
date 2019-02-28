@@ -1,5 +1,8 @@
-p {
-    color: red;
+#display {
+    border-style: solid;
+    border-color: black;
+    width: 100px;
+    height: 25px;
 }
 
 #equals {
