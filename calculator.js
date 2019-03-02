@@ -29,6 +29,12 @@ var temp = "";
         //"Swap the '-' symbol so text input handles it correctly"; Need to figure out what this means!
 
         //Declare the answer and clear the variables
+        function displayAnswer () {
+            var testAnswer = 80085;
+            document.getElementById("display").innerHTML = testAnswer;
+        }
+
+        
 
     //Otherwise add temp and val to inputs and clear temp
 
