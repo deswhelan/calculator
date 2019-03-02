@@ -1,3 +1,4 @@
+window.onload = function(){
 //Create array to store calculator inputs
 var inputs = [];
 var total = 0;
@@ -7,11 +8,19 @@ var temp = "";
 
 //run the script when any button is clicked
 
+
     //get the value of the clicked button
 
     //If it is a number, assign it to temp
 
     //If it is AC then re-initialise all variables
+    document.getElementById("clear").onclick = function() {
+        console.log(inputs, total, temp);
+        inputs = [];
+        total = 0;
+        temp = "";
+        console.log(inputs, total, temp);
+    };
 
     //Then add current symbol to the inputs array and clear temp
     //Translate multiply and divide symobl to mathematical values
@@ -34,9 +43,10 @@ var temp = "";
             document.getElementById("display").innerHTML = testAnswer;
         }
 
-        
-
     //Otherwise add temp and val to inputs and clear temp
+
+    }
+    
 
 
         
