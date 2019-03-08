@@ -6,36 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="calculator2.js"></script>
 </head>
-<body onload="calculator()">
+<body>
     <div id="display">Display not working yet</div>
     <div id ="row-zero">
         <button id="clear">AC</button>
     </div>
     <div id="row-one">
-        <button class="boop" id="seven">7</button>
-        <button class="boop" id="eight">8</button>
-        <button id="nine">9</button>
-        <button id="divide">÷</button>
+        <button class="boop" id="seven" onclick="storeClickedButton(7)">7</button>
+        <button class="boop" id="eight" onclick="storeClickedButton(8)">8</button>
+        <button id="nine" onclick="storeClickedButton(9)">9</button>
+        <button id="divide" onclick="storeClickedButton('/')">÷</button>
     </div>
     <div id="row-two">
-        <button id="four">4</button>
-        <button id="five">5</button>
-        <button id="six">6</button>
-        <button id="multiply">X</button>
+        <button id="four" onclick="storeClickedButton(4)">4</button>
+        <button id="five" onclick="storeClickedButton(5)">5</button>
+        <button id="six" onclick="storeClickedButton(6)">6</button>
+        <button id="multiply" onclick="storeClickedButton('*')">X</button>
     </div>
     <div id="row-three">
-        <button id="one">1</button>
-        <button id="two">2</button>
-        <button id="three">3</button>
-        <button id="subtract">-</button>
+        <button id="one" onclick="storeClickedButton(1)">1</button>
+        <button id="two" onclick="storeClickedButton(2)">2</button>
+        <button id="three" onclick="storeClickedButton(3)">3</button>
+        <button id="subtract" onclick="storeClickedButton('-')">-</button>
     </div>
     <div id="row-four">
-        <button id="zero">0</button>
-        <button id="decimal">.</button>
+        <button id="zero" onclick="storeClickedButton(0)">0</button>
+        <button id="decimal" onclick="storeClickedButton('.')">.</button>
         <button id="equals">=</button>
-        <button id="add">+</button>
+        <button id="add" onclick="storeClickedButton('+')">+</button>
     </div>
-    <script src="calculator2.js"></script>
 </body>
 </html>
