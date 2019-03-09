@@ -11,7 +11,8 @@ function storeClickedButton(buttonValue) {
 function displayClickedButton(buttonValue) {
     if(!isNaN(buttonValue) || buttonValue == "."){
         temporaryValue.push(buttonValue);
-        display(temporaryValue.join(""))
+        console.log(temporaryValue);
+        display(parseFloat(temporaryValue.join("")))
     } else {
         display(buttonValue);
         temporaryValue = [];
@@ -39,6 +40,7 @@ function equationBuilder () {
         }
     }
     calculationValuesArray.pop();
+    console.log(calculationValuesArray);
     return calculationValuesArray;
 }
 
@@ -46,8 +48,6 @@ function equationBuilder () {
 function performCalculation() {
     var equation = equationBuilder();
     var runningTotal = equation[0];
-    console.log(equation);
-
     for (var i = 2; i < equation.length; i++) {
         var symbol = equation[i-1];
         if (!isNaN(equation[i])) {
@@ -63,10 +63,10 @@ function performCalculation() {
             if(symbol == "/") {
                 runningTotal /= equation[i];
             }
-            
         }
     }
     display(runningTotal);
+    temporaryValue = [];
 }
 
 //show current number, symbol or answer on calculator screen
