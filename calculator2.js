@@ -1,11 +1,25 @@
 //Create array to store calculator inputs
 var clickedButtons = [];
 var temporaryValue = [];
+var decimalPointCounter = 0;
 
 //Store and display values of clicked buttons to clickedButtons array
 function storeClickedButton(buttonValue) {
+    if(decimalPointChecker(buttonValue) == false){
+        return
+    };
     displayClickedButton(buttonValue);
     clickedButtons.push(buttonValue);
+}
+
+//Two decimals in one number should not be accepted
+function decimalPointChecker(buttonValue) {
+    if(buttonValue == ".") {
+        decimalPointCounter++;
+    }
+    if(buttonValue == "." && decimalPointCounter > 1) {
+        return false;
+    }
 }
 
 function displayClickedButton(buttonValue) {
@@ -16,6 +30,7 @@ function displayClickedButton(buttonValue) {
     } else {
         display(buttonValue);
         temporaryValue = [];
+        decimalPointCounter = 0;
     }
 }
 
@@ -23,6 +38,7 @@ function displayClickedButton(buttonValue) {
 function allClear() {
     clickedButtons = [];
     temporaryValue = [];
+    decimalPointCounter = 0;
     display(0);
 }
 
@@ -67,6 +83,7 @@ function performCalculation() {
     }
     display(runningTotal);
     temporaryValue = [];
+    decimalPointCounter = 0;
 }
 
 //show current number, symbol or answer on calculator screen
