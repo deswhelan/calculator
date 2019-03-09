@@ -1,16 +1,13 @@
 //Create array to store calculator inputs
 var clickedButtons = [];
 var total = 0;
-
-//Create a variable to store current button value
 var temporaryValue = [];
 
-//Store values of clicked buttons to clickedButtons array
+//Store and display values of clicked buttons to clickedButtons array
 function storeClickedButton(buttonValue) {
     displayClickedButton(buttonValue);
     clickedButtons.push(buttonValue);
 }
-
 
 function displayClickedButton(buttonValue) {
     if(!isNaN(buttonValue) || buttonValue == "."){
@@ -30,38 +27,35 @@ function allClear() {
     display(0);
 }
 
-//convert individual inputs to appropriate display values
-// function convertToDisplay() {
-//     var displayValue = clickedButtons.reduce((a,c) => a + c);
-//     var sliceCounter = 0;
-
-//     clickedButtons.forEach(function (element) {
-//         if(!isNaN(element)){
-//             sliceCounter++
-//         } else {
-//             console.log(sliceCounter);
-//             return;
-//         }
-//     });
-
-//     display(temporaryValue);
-// }
-
-function defineDisplayValue() {
-    var sliceCounter = 0;
-
-    clickedButtons.forEach(function (element) {
-        if(!isNaN(element)){
-            sliceCounter++
+//convert clickedButtons into a new array
+function makeCalculationValuesArray () {
+    var calculationValuesArray = [];
+    var numberBuilder = []
+    for(var i = 0; i < clickedButtons.length+1; i++) {
+        if(!isNaN(clickedButtons[i]) || clickedButtons[i] == ".") {
+            numberBuilder.push(clickedButtons[i]);
         } else {
-            console.log(sliceCounter);
-            return;
+            calculationValuesArray.push(parseFloat(numberBuilder.join("")));
+            calculationValuesArray.push(clickedButtons[i]);
+            numberBuilder = [];
         }
-    });
+    }
+    calculationValuesArray.pop();
+    console.log(calculationValuesArray);
+}
 
-    var displayValue = "";
+//Calculation time!!
+function performCalculation() {
+    makeCalculationValuesArray();
+//     var currentNumber = 0;
+//     for(var i = 0; i < clickedButtons.length; i++) {
+//         if(!isNaN(clickedButtons[i]) || clickedButtons[i] == ".") {
 
-    return displayValue;
+//         }
+//     }
+
+//     display("answer");
+//     console.log(temporaryValue);
 }
 
 //show current number, symbol or answer on calculator screen
