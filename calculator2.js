@@ -1,6 +1,5 @@
 //Create array to store calculator inputs
 var clickedButtons = [];
-var total = 0;
 var temporaryValue = [];
 
 //Store and display values of clicked buttons to clickedButtons array
@@ -22,13 +21,12 @@ function displayClickedButton(buttonValue) {
 //Re-initialise all variables when AC is clicked
 function allClear() {
     clickedButtons = [];
-    total = 0;
     temporaryValue = [];
     display(0);
 }
 
-//convert clickedButtons into a new array
-function makeCalculationValuesArray () {
+//convert clickedButtons array into an "equation" array
+function equationBuilder () {
     var calculationValuesArray = [];
     var numberBuilder = []
     for(var i = 0; i < clickedButtons.length+1; i++) {
@@ -41,21 +39,34 @@ function makeCalculationValuesArray () {
         }
     }
     calculationValuesArray.pop();
-    console.log(calculationValuesArray);
+    return calculationValuesArray;
 }
 
 //Calculation time!!
 function performCalculation() {
-    makeCalculationValuesArray();
-//     var currentNumber = 0;
-//     for(var i = 0; i < clickedButtons.length; i++) {
-//         if(!isNaN(clickedButtons[i]) || clickedButtons[i] == ".") {
+    var equation = equationBuilder();
+    var runningTotal = equation[0];
+    console.log(equation);
 
-//         }
-//     }
-
-//     display("answer");
-//     console.log(temporaryValue);
+    for (var i = 2; i < equation.length; i++) {
+        var symbol = equation[i-1];
+        if (!isNaN(equation[i])) {
+            if(symbol == "+") {
+                runningTotal += equation[i];
+            }
+            if(symbol == "-") {
+                runningTotal -= equation[i];
+            }
+            if(symbol == "*") {
+                runningTotal *= equation[i];
+            } 
+            if(symbol == "/") {
+                runningTotal /= equation[i];
+            }
+            
+        }
+    }
+    display(runningTotal);
 }
 
 //show current number, symbol or answer on calculator screen
