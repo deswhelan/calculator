@@ -2,6 +2,7 @@
 var clickedButtons = [];
 var temporaryValue = [];
 var decimalPointCounter = 0;
+var storedAnswer = 0;
 
 //Store and display values of clicked buttons to clickedButtons array
 function storeClickedButton(buttonValue) {
@@ -25,9 +26,10 @@ function decimalPointChecker(buttonValue) {
 function displayClickedButton(buttonValue) {
     if(!isNaN(buttonValue) || buttonValue == "."){
         temporaryValue.push(buttonValue);
-        console.log(temporaryValue);
+        console.log("last clicked button: " + temporaryValue);
         display(parseFloat(temporaryValue.join("")))
     } else {
+        console.log("last clicked button: " + buttonValue)
         display(buttonValue);
         temporaryValue = [];
         decimalPointCounter = 0;
@@ -39,31 +41,40 @@ function allClear() {
     clickedButtons = [];
     temporaryValue = [];
     decimalPointCounter = 0;
+}
+
+function allClearButton() {
+    allClear();
     display(0);
 }
 
 //convert clickedButtons array into an "equation" array
 function equationBuilder () {
-    var calculationValuesArray = [];
-    var numberBuilder = []
+    var equation = [];
+    var numberBuilder = [];
     for(var i = 0; i < clickedButtons.length+1; i++) {
         if(!isNaN(clickedButtons[i]) || clickedButtons[i] == ".") {
             numberBuilder.push(clickedButtons[i]);
         } else {
-            calculationValuesArray.push(parseFloat(numberBuilder.join("")));
-            calculationValuesArray.push(clickedButtons[i]);
+            equation.push(parseFloat(numberBuilder.join("")));
+            equation.push(clickedButtons[i]);
             numberBuilder = [];
         }
     }
-    calculationValuesArray.pop();
-    console.log(calculationValuesArray);
-    return calculationValuesArray;
+    equation.pop();
+    console.log("Equation: " + equation);
+    return equation;
 }
 
 //Calculation time!!
 function performCalculation() {
     var equation = equationBuilder();
+
+    if (isNaN(equation[0])) {
+        equation.unshift(storedAnswer)
+    }
     var runningTotal = equation[0];
+
     for (var i = 2; i < equation.length; i++) {
         var symbol = equation[i-1];
         if (!isNaN(equation[i])) {
@@ -81,9 +92,9 @@ function performCalculation() {
             }
         }
     }
+    storedAnswer = runningTotal;
     display(runningTotal);
-    temporaryValue = [];
-    decimalPointCounter = 0;
+    allClear();
 }
 
 //show current number, symbol or answer on calculator screen
