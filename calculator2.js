@@ -26,10 +26,8 @@ function decimalPointValidator(buttonValue) {
 function displayClickedButton(buttonValue) {
     if(!isNaN(buttonValue) || buttonValue == "."){
         temporaryValue.push(buttonValue);
-        console.log("last clicked button: " + temporaryValue);
         display(parseFloat(temporaryValue.join("")))
     } else {
-        console.log("last clicked button: " + buttonValue)
         display(buttonValue);
         temporaryValue = [];
         decimalPointCounter = 0;
@@ -62,7 +60,6 @@ function equationBuilder () {
         }
     }
     equation.pop();
-    console.log("Equation: " + equation);
     return equation;
 }
 
