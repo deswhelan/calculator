@@ -55,20 +55,19 @@ function equationBuilder () {
         if(!isNaN(clickedButtons[i]) || clickedButtons[i] == ".") {
             numberBuilder.push(clickedButtons[i]);
         } else {
-            equation.push(parseFloat(numberBuilder.join("")), clickedButtons[i]).pop();
+            equation.push(parseFloat(numberBuilder.join("")), clickedButtons[i]);
             numberBuilder = [];
         }
     }
+    equation.pop();
     return equation;
 }
 
 //Calculation time!!
 function performCalculation() {
     var equation = equationBuilder();
+    newCalculationChecker(equation);
 
-    if (isNaN(equation[0])) {
-        equation.unshift(storedAnswer)
-    }
     var runningTotal = equation[0];
 
     for (var i = 2; i < equation.length; i++) {
@@ -91,6 +90,13 @@ function performCalculation() {
     storedAnswer = runningTotal;
     display(runningTotal);
     allClear();
+}
+
+//check if we are using the answer from the last calculation, or starting a new calculation
+function newCalculationChecker (equation) {
+    if (isNaN(equation[0])) {
+        equation.unshift(storedAnswer)
+    }
 }
 
 //show current number, symbol or answer on calculator screen
