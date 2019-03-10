@@ -1,8 +1,8 @@
-//Create array to store calculator inputs
 var clickedButtons = [];
 var temporaryValue = [];
 var decimalPointCounter = 0;
 var storedAnswer = 0;
+var numberBuilder = [];
 
 //Store and display values of clicked buttons to clickedButtons array
 function storeClickedButton(buttonValue) {
@@ -46,20 +46,19 @@ function allClearButton() {
     display(0);
 }
 
-//convert clickedButtons array into an "equation" array
+//Build "equation" array using clickedButtons array data.
+//do this by converting individual number elements into the actual number required for the calculation
+//e.g. [1,2,+,3,4] becomes [12,+,34]
 function equationBuilder () {
     var equation = [];
-    var numberBuilder = [];
     for(var i = 0; i < clickedButtons.length+1; i++) {
         if(!isNaN(clickedButtons[i]) || clickedButtons[i] == ".") {
             numberBuilder.push(clickedButtons[i]);
         } else {
-            equation.push(parseFloat(numberBuilder.join("")));
-            equation.push(clickedButtons[i]);
+            equation.push(parseFloat(numberBuilder.join("")), clickedButtons[i]).pop();
             numberBuilder = [];
         }
     }
-    equation.pop();
     return equation;
 }
 
