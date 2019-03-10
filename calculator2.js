@@ -67,9 +67,21 @@ function equationBuilder () {
 function performCalculation() {
     var equation = equationBuilder();
     newCalculationChecker(equation);
-
     var runningTotal = equation[0];
+    runningTotal = doTheMaths(equation, runningTotal);
+    storedAnswer = runningTotal;
+    display(storedAnswer);
+    allClear();
+}
 
+//check if we are using the answer from the last calculation, or starting a new calculation
+function newCalculationChecker (equation) {
+    if (isNaN(equation[0])) {
+        equation.unshift(storedAnswer)
+    }
+}
+
+function doTheMaths (equation, runningTotal) {
     for (var i = 2; i < equation.length; i++) {
         var symbol = equation[i-1];
         if (!isNaN(equation[i])) {
@@ -87,16 +99,7 @@ function performCalculation() {
             }
         }
     }
-    storedAnswer = runningTotal;
-    display(runningTotal);
-    allClear();
-}
-
-//check if we are using the answer from the last calculation, or starting a new calculation
-function newCalculationChecker (equation) {
-    if (isNaN(equation[0])) {
-        equation.unshift(storedAnswer)
-    }
+    return runningTotal;
 }
 
 //show current number, symbol or answer on calculator screen
