@@ -1,12 +1,62 @@
+html {
+    background-image: url("http://www.scalsys.com/wallpaper/Wooden-Desk-Wallpapers/Wooden-Desk-Wallpapers_452808.jpg");
+}
+
+#calculator {
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+    padding: 10px;
+    background-color:#202020;
+    width: 215px;
+    border-top-left-radius: 10%10px;
+    border-top-right-radius: 10%10px;
+    border-bottom-left-radius: 10%10px;
+    border-bottom-right-radius: 10%10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #display {
     border-style: solid;
     border-color: black;
-    width: 100px;
+    width: 190px;
     height: 25px;
     font-family: Orbitron;
     background-color: #9ACA70;
+    border-radius: 10%;
+    margin: 7.5px;
+    height: 30px;
+    font-size: 1.5em;
+    text-align: right;
+    padding: 5px;
 }
 
-#equals {
-    background-color: green;
+button {
+    font-family: Orbitron;
+    background-color: darkgray;
+    width: 40px;
+    height: 30px;
+    border: 1px solid $darkGrey;
+    border-top: 2px solid lighten($darkGrey, 20);
+    color: black;
+    font-size: 1.1em;
+    border-radius: 20%;
+    border-top-left-radius: 80%10px;
+    border-top-right-radius: 80%10px;
+    border-bottom-left-radius: 100%10px;
+    border-bottom-right-radius: 100%10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 8px;
+}
+
+.number {
+    color: white;
+    background-color: #404040;
+}
+
+#clear {
+    color: white;
+    background-color: #ff8000;
 }
