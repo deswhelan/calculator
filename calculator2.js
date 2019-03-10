@@ -6,7 +6,7 @@ var storedAnswer = 0;
 
 //Store and display values of clicked buttons to clickedButtons array
 function storeClickedButton(buttonValue) {
-    if(decimalPointChecker(buttonValue) == false){
+    if(decimalPointValidator(buttonValue) == false){
         return
     };
     displayClickedButton(buttonValue);
@@ -14,7 +14,7 @@ function storeClickedButton(buttonValue) {
 }
 
 //Two decimals in one number should not be accepted
-function decimalPointChecker(buttonValue) {
+function decimalPointValidator(buttonValue) {
     if(buttonValue == ".") {
         decimalPointCounter++;
     }
